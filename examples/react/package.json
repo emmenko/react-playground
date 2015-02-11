@@ -1,0 +1,26 @@
+{
+  "name": "react-example",
+  "version": "0.0.1",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "build": "webpack --progress --colors",
+    "start": "webpack-dev-server --inline --no-info --progress",
+    "test": "jest"
+  },
+  "dependencies": {
+    "react": "latest",
+    "react-tools": "latest"
+  },
+  "devDependencies": {
+    "6to5-loader": "latest",
+    "css-loader": "latest",
+    "json-loader": "latest",
+    "jsx-loader": "latest",
+    "react-hot-loader": "latest",
+    "react-tools": "latest",
+    "sass-loader": "latest",
+    "style-loader": "latest",
+    "webpack-dev-server": "1.7.0"
+  }
+}

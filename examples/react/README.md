@@ -1,0 +1,1 @@
+A simple React component rendering a Customer list
