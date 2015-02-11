@@ -37,3 +37,5 @@ CustomerStore.dispatchToken = Dispatcher.register(payload => {
       break
   }
 })
+
+export default CustomerStore
