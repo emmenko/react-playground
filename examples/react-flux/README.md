@@ -1,1 +1,1 @@
-A simple React component rendering a Customer list
+A simple application using Flux + React component for rendering a Customer list
