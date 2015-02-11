@@ -1,0 +1,7 @@
+.pull-left { float: left; }
+.clearfix { clear: both; }
+li { list-style: none; }
+.customer-info {
+  margin-left: 10px; margin-top: 10px;
+  > span:last-child { margin-left: 10px; }
+}

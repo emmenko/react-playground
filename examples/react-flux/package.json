@@ -1,0 +1,36 @@
+{
+  "name": "react-example",
+  "version": "0.0.1",
+  "description": "",
+  "main": "webpack.config.js",
+  "scripts": {
+    "build": "webpack --progress --colors",
+    "start": "webpack-dev-server --inline --no-info --progress",
+    "test": "jest"
+  },
+  "dependencies": {
+    "react": "latest",
+    "react-tools": "latest"
+  },
+  "devDependencies": {
+    "6to5-core": "latest",
+    "6to5-loader": "latest",
+    "css-loader": "latest",
+    "jest-cli": "latest",
+    "json-loader": "latest",
+    "jsx-loader": "latest",
+    "react-hot-loader": "latest",
+    "react-tools": "latest",
+    "sass-loader": "latest",
+    "style-loader": "latest",
+    "webpack-dev-server": "1.7.0"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/preprocessor.js",
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react",
+      "<rootDir>/node_modules/react-tools"
+    ],
+    "moduleFileExtensions": ["js", "jsx", "json", "scss"]
+  }
+}
