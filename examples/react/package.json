@@ -13,8 +13,10 @@
     "react-tools": "latest"
   },
   "devDependencies": {
+    "6to5-core": "latest",
     "6to5-loader": "latest",
     "css-loader": "latest",
+    "jest-cli": "latest",
     "json-loader": "latest",
     "jsx-loader": "latest",
     "react-hot-loader": "latest",
@@ -22,5 +24,13 @@
     "sass-loader": "latest",
     "style-loader": "latest",
     "webpack-dev-server": "1.7.0"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/preprocessor.js",
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react",
+      "<rootDir>/node_modules/react-tools"
+    ],
+    "moduleFileExtensions": ["js", "jsx", "json", "scss"]
   }
 }
