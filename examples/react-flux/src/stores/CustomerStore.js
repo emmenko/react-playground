@@ -1,15 +1,18 @@
 import {EventEmitter} from 'events'
+import React from 'react/addons'
+import {Map, List, fromJS} from 'immutable'
 import Dispatcher from '../Dispatcher'
 import Constants from '../Constants'
 
 var eventEmitter = new EventEmitter()
 
-// TODO: use immutables
-var customers = {
-  count: 0,
-  total: 0,
-  results: []
-}
+var store = Map({
+  customers: Map({
+    count: 0,
+    total: 0,
+    results: List()
+  })
+})
 
 var CustomerStore = {
   subscribe(callback) {
@@ -18,8 +21,8 @@ var CustomerStore = {
   unsubscribe(callback) {
     eventEmitter.removeListener(Constants.CHANGE_EVENT, callback)
   },
-  getAll() {
-    return customers
+  getAllCustomers() {
+    return store.get('customers')
   }
 }
 
@@ -28,7 +31,7 @@ CustomerStore.dispatchToken = Dispatcher.register(payload => {
 
   switch(action.type) {
     case Constants.ActionTypes.FETCH_CUSTOMERS:
-      customers = action.data
+      store = store.set('customers', fromJS(action.data))
       eventEmitter.emit(Constants.CHANGE_EVENT)
       break
     case Constants.ActionTypes.ERROR_FETCH_CUSTOMERS:

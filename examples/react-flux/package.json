@@ -8,6 +8,7 @@
   "dependencies": {
     "bluebird": "latest",
     "flux": "latest",
+    "immutable": "latest",
     "object-assign": "latest",
     "react": "latest",
     "react-tools": "latest"
