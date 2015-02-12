@@ -14,8 +14,7 @@
     "flux": "latest",
     "object-assign": "latest",
     "react": "latest",
-    "react-tools": "latest",
-    "request": "latest"
+    "react-tools": "latest"
   },
   "devDependencies": {
     "6to5-core": "latest",

@@ -1,11 +1,24 @@
 import './assets/customer-list'
 import React from 'react'
-import customersJson from './fixture/customers'
+import CustomerActions from '../actions/CustomerActions'
+import CustomerStore from '../stores/CustomerStore'
 import CustomerListItem from './CustomerListItem'
 
 var CustomerList = React.createClass({
   getInitialState() {
-    return {customers: customersJson.results}
+    return {customers: CustomerStore.getAll().results}
+  },
+  componentWillMount() {
+    CustomerActions.fetch()
+  },
+  componentDidMount() {
+    CustomerStore.subscribe(this.onChange)
+  },
+  componentWillUnmount() {
+    CustomerStore.unsubscribe(this.onChange)
+  },
+  onChange() {
+    this.setState(this.getInitialState())
   },
   render() {
     return (
