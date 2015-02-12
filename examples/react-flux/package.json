@@ -13,7 +13,8 @@
     "bluebird": "latest",
     "flux": "latest",
     "react": "latest",
-    "react-tools": "latest"
+    "react-tools": "latest",
+    "request": "latest"
   },
   "devDependencies": {
     "6to5-core": "latest",
