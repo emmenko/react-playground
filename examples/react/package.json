@@ -1,9 +1,5 @@
 {
-  "name": "react-example",
-  "version": "0.0.1",
-  "description": "",
   "private": true,
-  "main": "webpack.config.js",
   "scripts": {
     "build": "webpack --progress --colors",
     "start": "webpack-dev-server --inline --no-info --progress",
