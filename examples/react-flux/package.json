@@ -12,6 +12,7 @@
   "dependencies": {
     "bluebird": "latest",
     "flux": "latest",
+    "object-assign": "latest",
     "react": "latest",
     "react-tools": "latest",
     "request": "latest"
