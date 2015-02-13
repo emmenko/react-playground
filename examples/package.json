@@ -6,11 +6,14 @@
     "test": "jest"
   },
   "dependencies": {
+    "bluebird": "latest",
+    "flux": "latest",
+    "immutable": "latest",
+    "object-assign": "latest",
     "react": "latest",
-    "react-tools": "latest"
+    "react-tools": "latest",
   },
   "devDependencies": {
-    "6to5-core": "latest",
     "6to5-loader": "latest",
     "css-loader": "latest",
     "jest-cli": "latest",
