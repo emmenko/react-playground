@@ -11,7 +11,7 @@ const actionFetchCustomer = {
 }
 
 describe('CustomerStore', () => {
-  let Dispatcher, CustomerStore, callback
+  let Dispatcher, CustomerStore
 
   beforeEach(() => {
     Dispatcher = require('../../Dispatcher')
