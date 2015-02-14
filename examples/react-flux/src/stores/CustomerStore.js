@@ -1,5 +1,4 @@
 import {EventEmitter} from 'events'
-import React from 'react/addons'
 import {Map, List, fromJS} from 'immutable'
 import Dispatcher from '../Dispatcher'
 import Constants from '../Constants'
@@ -35,7 +34,7 @@ CustomerStore.dispatchToken = Dispatcher.register(payload => {
       eventEmitter.emit(Constants.CHANGE_EVENT)
       break
     case Constants.ActionTypes.ERROR_FETCH_CUSTOMERS:
-      var error = action.data
+      // var error = action.data
       // TODO: handle event error
       break
   }

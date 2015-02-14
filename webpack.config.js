@@ -5,19 +5,20 @@ var webpack = require('webpack')
 function isDirectory(dir) {
   return fs.lstatSync(dir).isDirectory()
 }
+var EXAMPLES_DIR = __dirname + '/examples'
 
 module.exports = {
 
   devtool: 'inline-source-map',
 
-  entry: fs.readdirSync(__dirname).reduce(function (entries, dir) {
-    var isDraft = dir.charAt(0) === '_' ||  dir === 'node_modules'
+  entry: fs.readdirSync(EXAMPLES_DIR).reduce(function (entries, dir) {
+    var isDraft = dir.charAt(0) === '_' || dir === 'node_modules'
 
-    if (!isDraft && isDirectory(path.join(__dirname, dir)))
+    if (!isDraft && isDirectory(path.join(EXAMPLES_DIR, dir)))
       entries[dir] = [
         'webpack-dev-server/client?http://localhost:8080',
         'webpack/hot/only-dev-server',
-        path.join(__dirname, dir, 'main.jsx')
+        path.join(EXAMPLES_DIR, dir, 'main.jsx')
       ]
 
     return entries

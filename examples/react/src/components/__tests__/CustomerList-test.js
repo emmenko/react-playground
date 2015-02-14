@@ -1,12 +1,10 @@
-jest.autoMockOff()
-
 import React from 'react/addons'
 import CustomerList from '../CustomerList'
 import customersJson from '../fixture/customers'
 
-var TestUtils = React.addons.TestUtils
+var {TestUtils} = React.addons
 
-describe('CustomerList', () => {
+describe('React::CustomerList', () => {
 
   it('should render list of items', () => {
     var list = TestUtils.renderIntoDocument(

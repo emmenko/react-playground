@@ -1,7 +1,3 @@
-jest.dontMock('events')
-jest.dontMock('object-assign')
-jest.dontMock('../CustomerStore')
-
 const actionFetchCustomer = {
   source: 'server-action',
   action: {
@@ -19,17 +15,17 @@ describe('CustomerStore', () => {
 
   beforeEach(() => {
     Dispatcher = require('../../Dispatcher')
+    spyOn(Dispatcher, 'register').and.callThrough()
     CustomerStore = require('../CustomerStore')
-    callback = Dispatcher.register.mock.calls[0][0]
   })
 
-  it('should register a callback with the dispatcher', () => {
-    expect(Dispatcher.register.mock.calls.length).toBe(1)
+  xit('should register a callback with the dispatcher', () => {
+    expect(Dispatcher.register.calls.count()).toBe(1)
   })
 
   it('should initialize with default data', () => {
-    var customers = CustomerStore.getAll()
-    expect(customers).toEqual({
+    var customers = CustomerStore.getAllCustomers()
+    expect(customers.toJS()).toEqual({
       count: 0,
       total: 0,
       results: []
@@ -37,26 +33,26 @@ describe('CustomerStore', () => {
   })
 
   it('should populate store with fetched data', () => {
-    callback(actionFetchCustomer)
-    var customers = CustomerStore.getAll()
-    expect(customers).toEqual(actionFetchCustomer.action.data)
+    Dispatcher.dispatch(actionFetchCustomer)
+    var customers = CustomerStore.getAllCustomers()
+    expect(customers.toJS()).toEqual(actionFetchCustomer.action.data)
   })
 
   it('should subscribe to updates', () => {
-    var callMe = jest.genMockFunction()
+    var callMe = jasmine.createSpy('callMe')
 
     // subscribe to change events with our mocked fn
     CustomerStore.subscribe(callMe)
     // first call
-    callback(actionFetchCustomer)
-    expect(callMe.mock.calls.length).toBe(1)
+    Dispatcher.dispatch(actionFetchCustomer)
+    expect(callMe.calls.count()).toBe(1)
     // second call
-    callback(actionFetchCustomer)
-    expect(callMe.mock.calls.length).toBe(2)
+    Dispatcher.dispatch(actionFetchCustomer)
+    expect(callMe.calls.count()).toBe(2)
 
     // when we unsubscribe, there should not be any more calls
     CustomerStore.unsubscribe(callMe)
-    callback(actionFetchCustomer)
-    expect(callMe.mock.calls.length).toBe(2)
+    Dispatcher.dispatch(actionFetchCustomer)
+    expect(callMe.calls.count()).toBe(2)
   })
 })

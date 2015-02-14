@@ -1,12 +1,10 @@
-jest.autoMockOff()
-
 import React from 'react/addons'
 import CustomerListItem from '../CustomerListItem'
 import customersJson from '../fixture/customers'
 
-var TestUtils = React.addons.TestUtils
+var {TestUtils} = React.addons
 
-describe('CustomerListItem', () => {
+describe('Flux::CustomerListItem', () => {
 
   var customer = customersJson.results[0]
   var item = TestUtils.renderIntoDocument(
