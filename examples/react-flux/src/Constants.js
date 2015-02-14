@@ -1,7 +1,7 @@
 export default {
   ActionTypes: {
-    FETCH_CUSTOMERS: 'fetch-customers',
-    ERROR_FETCH_CUSTOMERS: 'error-fetch-customers'
+    FETCH_FRIENDS: 'fetch-friends',
+    ERROR_FETCH_FRIENDS: 'error-fetch-friends'
   },
   Payload: {
     SERVER_ACTION: 'server-action',

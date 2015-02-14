@@ -1,17 +1,17 @@
 import React from 'react/addons'
-import CustomerList from '../CustomerList'
-import customersJson from '../fixture/customers'
+import FriendsList from '../FriendsList'
+import friendsJson from '../fixture/friends'
 
 var {TestUtils} = React.addons
 
-describe('React::CustomerList', () => {
+describe('React::FriendsList', () => {
 
   it('should render list of items', () => {
     var list = TestUtils.renderIntoDocument(
-      <CustomerList />
+      <FriendsList />
     )
 
     var items = TestUtils.scryRenderedDOMComponentsWithTag(list, 'li')
-    expect(items.length).toBe(customersJson.results.length)
+    expect(items.length).toBe(friendsJson.results.length)
   })
 })

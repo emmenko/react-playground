@@ -2,12 +2,12 @@ import Dispatcher from '../Dispatcher'
 import Http from '../utils/Http'
 import Constants from '../Constants'
 
-var customerActions = {
+var FriendsActions = {
 
   fetch(opts = {}) {
-    Http.get('/api/customers')
+    Http.get('/api/friends')
     .then(result => Dispatcher.handleServerAction({
-      type: Constants.ActionTypes.FETCH_CUSTOMERS,
+      type: Constants.ActionTypes.FETCH_FRIENDS,
       data: result
     }))
     // .fail(err => Dispatcher.handleErrorAction({
@@ -17,4 +17,4 @@ var customerActions = {
   }
 }
 
-export default customerActions
+export default FriendsActions

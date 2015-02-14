@@ -3,7 +3,7 @@
   "scripts": {
     "build": "webpack --progress --colors",
     "start": "webpack-dev-server --no-info --inline --progress --content-base examples",
-    "test": "jsxhint . && karma start"
+    "test": "jsxhint . && karma start --single-run"
   },
   "dependencies": {
     "bluebird": "latest",

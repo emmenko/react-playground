@@ -1,9 +1,9 @@
 import rewire from 'rewire'
 
-const actionFetchCustomer = {
+const actionFetchFriends = {
   source: 'server-action',
   action: {
-    type: 'fetch-customers',
+    type: 'fetch-friends',
     data: {
       count: 1,
       total: 1,
@@ -12,19 +12,19 @@ const actionFetchCustomer = {
   }
 }
 
-describe('CustomerStore', () => {
-  let Dispatcher, CustomerStore, callback
+describe('FriendsStore', () => {
+  let Dispatcher, FriendsStore, callback
 
   beforeEach(() => {
     Dispatcher = require('../../Dispatcher')
     spyOn(Dispatcher, 'register')
-    CustomerStore = rewire('../CustomerStore')
+    FriendsStore = rewire('../FriendsStore')
     callback = Dispatcher.register.calls.mostRecent().args[0]
   })
 
   afterEach(() => {
     Dispatcher = null
-    CustomerStore = null
+    FriendsStore = null
   })
 
   it('should register a callback with the dispatcher', () => {
@@ -32,8 +32,8 @@ describe('CustomerStore', () => {
   })
 
   it('should initialize with default data', () => {
-    var customers = CustomerStore.getAllCustomers()
-    expect(customers.toJS()).toEqual({
+    var friends = FriendsStore.getAllFriends()
+    expect(friends.toJS()).toEqual({
       count: 0,
       total: 0,
       results: []
@@ -41,26 +41,26 @@ describe('CustomerStore', () => {
   })
 
   it('should populate store with fetched data', () => {
-    callback(actionFetchCustomer)
-    var customers = CustomerStore.getAllCustomers()
-    expect(customers.toJS()).toEqual(actionFetchCustomer.action.data)
+    callback(actionFetchFriends)
+    var friends = FriendsStore.getAllFriends()
+    expect(friends.toJS()).toEqual(actionFetchFriends.action.data)
   })
 
   it('should subscribe to updates', () => {
     var callMe = jasmine.createSpy('callMe')
 
     // subscribe to change events with our mocked fn
-    CustomerStore.subscribe(callMe)
+    FriendsStore.subscribe(callMe)
     // first call
-    callback(actionFetchCustomer)
+    callback(actionFetchFriends)
     expect(callMe.calls.count()).toBe(1)
     // second call
-    callback(actionFetchCustomer)
+    callback(actionFetchFriends)
     expect(callMe.calls.count()).toBe(2)
 
     // when we unsubscribe, there should not be any more calls
-    CustomerStore.unsubscribe(callMe)
-    callback(actionFetchCustomer)
+    FriendsStore.unsubscribe(callMe)
+    callback(actionFetchFriends)
     expect(callMe.calls.count()).toBe(2)
   })
 })

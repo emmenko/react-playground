@@ -1,5 +1,5 @@
 import Promise from 'bluebird'
-import customersJson from '../components/fixture/customers'
+import friendsJson from '../components/fixture/friends'
 
 // var request = Promise.promisifyAll(require('request'))
 
@@ -15,7 +15,7 @@ var Http = {
     // we don't want to make an actual request,
     // so we just return the fixture
     return new Promise((resolve, reject) => {
-      resolve(customersJson)
+      resolve(friendsJson)
     })
   }
 

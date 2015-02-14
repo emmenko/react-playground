@@ -1,4 +1,4 @@
 import React from 'react'
-import CustomerList from './src/components/CustomerList'
+import FriendsList from './src/components/FriendsList'
 
-React.render(<CustomerList />, document.getElementById('app'))
+React.render(<FriendsList />, document.getElementById('app'))

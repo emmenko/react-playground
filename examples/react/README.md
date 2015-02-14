@@ -1,1 +1,1 @@
-A simple React component rendering a Customer list
+A simple React component rendering a FriendsList
