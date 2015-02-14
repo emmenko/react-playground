@@ -29,6 +29,8 @@
     "karma-webpack": "latest",
     "react-hot-loader": "latest",
     "react-tools": "latest",
+    "rewire": "latest",
+    "rewire-webpack": "latest",
     "sass-loader": "latest",
     "style-loader": "latest",
     "webpack-dev-server": "1.7.0"

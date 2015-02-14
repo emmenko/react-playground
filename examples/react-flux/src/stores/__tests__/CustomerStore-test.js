@@ -1,3 +1,5 @@
+import rewire from 'rewire'
+
 const actionFetchCustomer = {
   source: 'server-action',
   action: {
@@ -11,15 +13,21 @@ const actionFetchCustomer = {
 }
 
 describe('CustomerStore', () => {
-  let Dispatcher, CustomerStore
+  let Dispatcher, CustomerStore, callback
 
   beforeEach(() => {
     Dispatcher = require('../../Dispatcher')
-    spyOn(Dispatcher, 'register').and.callThrough()
-    CustomerStore = require('../CustomerStore')
+    spyOn(Dispatcher, 'register')
+    CustomerStore = rewire('../CustomerStore')
+    callback = Dispatcher.register.calls.mostRecent().args[0]
   })
 
-  xit('should register a callback with the dispatcher', () => {
+  afterEach(() => {
+    Dispatcher = null
+    CustomerStore = null
+  })
+
+  it('should register a callback with the dispatcher', () => {
     expect(Dispatcher.register.calls.count()).toBe(1)
   })
 
@@ -33,7 +41,7 @@ describe('CustomerStore', () => {
   })
 
   it('should populate store with fetched data', () => {
-    Dispatcher.dispatch(actionFetchCustomer)
+    callback(actionFetchCustomer)
     var customers = CustomerStore.getAllCustomers()
     expect(customers.toJS()).toEqual(actionFetchCustomer.action.data)
   })
@@ -44,15 +52,15 @@ describe('CustomerStore', () => {
     // subscribe to change events with our mocked fn
     CustomerStore.subscribe(callMe)
     // first call
-    Dispatcher.dispatch(actionFetchCustomer)
+    callback(actionFetchCustomer)
     expect(callMe.calls.count()).toBe(1)
     // second call
-    Dispatcher.dispatch(actionFetchCustomer)
+    callback(actionFetchCustomer)
     expect(callMe.calls.count()).toBe(2)
 
     // when we unsubscribe, there should not be any more calls
     CustomerStore.unsubscribe(callMe)
-    Dispatcher.dispatch(actionFetchCustomer)
+    callback(actionFetchCustomer)
     expect(callMe.calls.count()).toBe(2)
   })
 })

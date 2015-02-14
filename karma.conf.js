@@ -1,4 +1,5 @@
 var webpack = require('webpack')
+var RewirePlugin = require("rewire-webpack")
 
 module.exports = function(config) {
   config.set({
@@ -33,6 +34,7 @@ module.exports = function(config) {
         ]
       },
       plugins: [
+        new RewirePlugin(),
         new webpack.DefinePlugin({
           'process.env.NODE_ENV': JSON.stringify('test')
         })

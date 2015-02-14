@@ -1,3 +1,5 @@
+import rewire from 'rewire'
+
 var ensureSingleListenerCall = (listener, payload) => {
   expect(listener.calls.count()).toBe(1)
   expect(listener.calls.mostRecent().args[0]).toEqual(payload)
@@ -8,8 +10,9 @@ describe('Dispatcher', () => {
   const payload = {foo: 'bar'}
 
   beforeEach(() => {
-    // listener = jasmine.createSpy('listener')
-    Dispatcher = require('../Dispatcher')
+    Dispatcher = rewire('../Dispatcher')
+    listener = jasmine.createSpy('listener')
+    Dispatcher.register(listener)
   })
 
   afterEach(() => {
@@ -17,19 +20,12 @@ describe('Dispatcher', () => {
     listener = null
   })
 
-  xit('should send actions to subscribers', () => {
-    var callMe = (p) => {
-      console.log('bubi')
-      expect(p).toEqual(payload)
-    }
-    spyOn(Dispatcher, 'register')
-    Dispatcher.register(callMe)
+  it('should send actions to subscribers', () => {
     Dispatcher.dispatch(payload)
-    // ensureSingleListenerCall(listener, payload)
-    expect(Dispatcher.register).toHaveBeenCalledWith(payload)
+    ensureSingleListenerCall(listener, payload)
   })
 
-  xit('should dispatch server action', () => {
+  it('should dispatch server action', () => {
     Dispatcher.handleServerAction(payload)
     ensureSingleListenerCall(listener, {
       source: 'server-action',
@@ -37,7 +33,7 @@ describe('Dispatcher', () => {
     })
   })
 
-  xit('should dispatch view action', () => {
+  it('should dispatch view action', () => {
     Dispatcher.handleViewAction(payload)
     ensureSingleListenerCall(listener, {
       source: 'view-action',
@@ -45,7 +41,7 @@ describe('Dispatcher', () => {
     })
   })
 
-  xit('should dispatch error action', () => {
+  it('should dispatch error action', () => {
     Dispatcher.handleErrorAction(payload)
     ensureSingleListenerCall(listener, {
       source: 'error-action',
