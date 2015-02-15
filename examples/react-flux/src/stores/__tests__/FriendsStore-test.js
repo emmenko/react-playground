@@ -22,11 +22,6 @@ describe('FriendsStore', () => {
     callback = Dispatcher.register.calls.mostRecent().args[0]
   })
 
-  afterEach(() => {
-    Dispatcher = null
-    FriendsStore = null
-  })
-
   it('should register a callback with the dispatcher', () => {
     expect(Dispatcher.register.calls.count()).toBe(1)
   })

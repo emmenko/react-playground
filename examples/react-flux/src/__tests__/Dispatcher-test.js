@@ -15,11 +15,6 @@ describe('Dispatcher', () => {
     Dispatcher.register(listener)
   })
 
-  afterEach(() => {
-    Dispatcher = null
-    listener = null
-  })
-
   it('should send actions to subscribers', () => {
     Dispatcher.dispatch(payload)
     ensureSingleListenerCall(listener, payload)

@@ -28,11 +28,10 @@ var FriendsList = React.createClass({
     this.setState(this.getInitialState())
   },
   render() {
-    var friends = this.state.friends.get('results').toJS()/* not needed in react@0.13 */
-      .map(f => <FriendsListItem friend={f} key={f.id} />)
     return (
       <ul>
-        {friends}
+        {this.state.friends.get('results').toJS()/* not needed in react@0.13 */
+          .map(f => <FriendsListItem friend={f} key={f.id} />)}
       </ul>
     )
   }

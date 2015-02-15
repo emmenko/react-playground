@@ -11,7 +11,7 @@ var FriendsActions = {
       data: result
     }))
     // .fail(err => Dispatcher.handleErrorAction({
-    //   type: Constants.ActionTypes.ERROR_FETCH_CUSTOMERS,
+    //   type: Constants.ActionTypes.ERROR_FETCH_FRIENDS,
     //   data: err
     // }))
   }

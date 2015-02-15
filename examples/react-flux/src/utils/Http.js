@@ -2,7 +2,7 @@ import Promise from 'bluebird'
 import friendsJson from '../components/fixture/friends'
 
 // var request = Promise.promisifyAll(require('request'))
-
+//
 var Http = {
 
   get(url) {

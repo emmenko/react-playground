@@ -1,6 +1,6 @@
 import React from 'react'
 
-var FriendsInfo = React.createClass({
+var FriendInfo = React.createClass({
   render() {
     return (
       <div className='friend-info pull-left'>
@@ -18,7 +18,7 @@ var FriendsListItem = React.createClass({
         <div className='pull-left'>
           <img src={this.props.friend.picture} />
         </div>
-        <FriendsInfo
+        <FriendInfo
           firstName={this.props.friend.firstName}
           lastName={this.props.friend.lastName}
           age={this.props.friend.age} />
