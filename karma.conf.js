@@ -1,5 +1,5 @@
 var webpack = require('webpack')
-var RewirePlugin = require("rewire-webpack")
+var RewirePlugin = require('rewire-webpack')
 
 module.exports = function(config) {
   config.set({

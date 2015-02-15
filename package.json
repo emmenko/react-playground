@@ -28,7 +28,6 @@
     "karma-sourcemap-loader": "latest",
     "karma-webpack": "latest",
     "react-hot-loader": "latest",
-    "react-tools": "latest",
     "rewire": "latest",
     "rewire-webpack": "latest",
     "sass-loader": "latest",
