@@ -1,17 +1,17 @@
 import {EventEmitter} from 'events'
-import {Map, List, fromJS} from 'immutable'
+// import {Map, List, fromJS} from 'immutable'
 import Dispatcher from '../Dispatcher'
 import Constants from '../Constants'
 
 var eventEmitter = new EventEmitter()
 
-var store = Map({
-  friends: Map({
+var store = {
+  friends: {
     count: 0,
     total: 0,
-    results: List()
-  })
-})
+    results: []
+  }
+}
 
 var FriendsStore = {
   subscribe(callback) {
@@ -30,7 +30,7 @@ FriendsStore.dispatchToken = Dispatcher.register(payload => {
 
   switch(action.type) {
     case Constants.ActionTypes.FETCH_FRIENDS:
-      store = store.set('friends', fromJS(action.data))
+      store.friends = action.data
       eventEmitter.emit(Constants.CHANGE_EVENT)
       break
     case Constants.ActionTypes.ERROR_FETCH_FRIENDS:
