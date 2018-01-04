@@ -1,1 +1,3 @@
+<h1 align="center">This repository is deprecated and not maintained anymore</h1>
+
 Just some samples about React.js + Flux + Immutable, setup with ES6, Webpack, Jest...
